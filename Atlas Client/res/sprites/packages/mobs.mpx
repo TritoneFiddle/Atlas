@@ -1,0 +1,211 @@
+14
+Lich
+15
+250
+25
+41
+0
+0
+25.0
+True
+200
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\lich.png
+lich.png
+Basilisk
+6
+20
+5
+9
+0
+0
+17
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\liz.png
+liz.png
+Skeleton
+8
+30
+10
+15
+0
+0
+10.0
+True
+200
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\skeleton.png
+skeleton.png
+Lesser Basilisk
+1
+7
+2
+5
+0
+0
+10
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\lizard.png
+lizard.png
+Scorpion
+4
+15
+3
+7
+0
+0
+15.0
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\scorpion.png
+scorpion.png
+Ent
+10
+50
+15
+22
+100
+0
+30
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\ent.png
+ent.png
+Gnoll
+9
+45
+10
+18
+0
+0
+15
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\karx.png
+karx.png
+Forest Spider
+2
+8
+3
+6
+0
+0
+15.0
+True
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\greenspider.png
+greenspider.png
+Orc
+5
+25
+5
+9
+0
+0
+10
+True
+180
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\Orc.png
+Orc.png
+Vampire
+11
+45
+9
+17
+0
+0
+23.0
+True
+250
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\vampire.png
+vampire.png
+Forest Scorpion
+3
+12
+4
+8
+0
+0
+10.0
+True
+150
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\redscorpion.png
+redscorpion.png
+Lowly Citizen
+1
+500
+500
+1000
+0
+0
+10
+False
+200
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\npc.png
+npc.png
+Cloaked Citizen
+1
+500
+500
+1000
+0
+0
+10
+False
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\npc2.png
+npc2.png
+Royal Citizen
+1
+500
+500
+1000
+0
+0
+10
+False
+160
+False
+none
+0
+D:\Eclipse Workspaces\Ironman\Atlas Client\res\sprites\npc3.png
+npc3.png
