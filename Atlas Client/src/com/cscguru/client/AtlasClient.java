@@ -9,7 +9,7 @@ import com.cscguru.client.states.AtlasLogin;
 import com.cscguru.client.states.CharacterCreation;
 import com.cscguru.client.ui.Settings;
 
-/**Starts the state-based game Atlas.
+/**Starts the state-based game Atlas. t
  * @author Bryan Bennett
  * @date 12/1/2013
  */
