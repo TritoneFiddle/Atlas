@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.cscguru.client.entities.PlayerInfo;
