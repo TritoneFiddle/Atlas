@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc">
     <target name="javadoc">
-        <javadoc access="public" author="true" classpath="../Atlas Shared/lib/lwjgl.jar;../Atlas Shared/lib/slick.jar;lib/lwjgl.jar;../Atlas Shared/bin;lib/slick.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.cscguru.client.enums,com.cscguru.client.items,com.cscguru.client.states,com.cscguru.client.interfaces,com.cscguru.client.ui,com.cscguru.client,com.cscguru.client.map,com.cscguru.client.entities" source="1.7" sourcepath="src" splitindex="true" use="true" version="true"/>
+        <javadoc access="public" author="true" classpath="lib/slick.jar;lib/lwjgl.jar" destdir="C:\Users\Bryan Bennett\Desktop\doc" doctitle="Atlas" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.cscguru.client.enums,com.cscguru.client.items,com.cscguru.client.states,com.cscguru.client.managers,com.cscguru.client,com.cscguru.client.entities,com.cscguru.com.balance,com.cscguru.client.interfaces,com.cscguru.client.ui,com.cscguru.client.map" source="1.7" sourcepath="src" splitindex="true" use="true" version="true"/>
     </target>
 </project>

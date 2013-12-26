@@ -3,6 +3,8 @@ com.cscguru.client.entities
 com.cscguru.client.enums
 com.cscguru.client.interfaces
 com.cscguru.client.items
+com.cscguru.client.managers
 com.cscguru.client.map
 com.cscguru.client.states
 com.cscguru.client.ui
+com.cscguru.com.balance
