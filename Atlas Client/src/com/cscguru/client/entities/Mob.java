@@ -12,6 +12,10 @@ import com.cscguru.client.map.Spawn;
 import com.cscguru.client.ui.Log;
 import com.cscguru.client.ui.Settings;
 import com.cscguru.com.balance.Balance;
+/**Base mob class.  Handles movement, behavior, drawing, and storing of mob information.
+ * @author Bryan Bennett
+ * @date Dec 26, 2013
+ */
 public class Mob extends Agent implements IClickable {
 	private static final long serialVersionUID = 1L;
 	private MobStat ms;
@@ -51,6 +55,15 @@ public class Mob extends Agent implements IClickable {
 	private boolean isListed;
 	
 	
+	/**Initializes a new mob based on the parameters passed in.
+	 * @param x
+	 * @param y
+	 * @param tileX
+	 * @param tileY
+	 * @param actor
+	 * @param ms
+	 * @param s
+	 */
 	public Mob(float x, float y, int tileX, int tileY, Actor actor, MobStat ms, Spawn s) {
 		super(x, y, tileX, tileY, actor);
 		this.ms = ms;
@@ -307,15 +320,28 @@ public class Mob extends Agent implements IClickable {
 			tilesToMove = 0;
 		}
 	}
+	/**Returns whether or not this mob is currently on the screen (in the scope of the camera).
+	 * @return boolean
+	 */
 	public boolean isOnScreen(){
 		return onScreen;
 	}
+	/**Returns whether or not this mob is currently in the arraylist held by the camera for mobs that are on screen.
+	 * @return boolean
+	 */
 	public boolean isListed(){
 		return isListed;
 	}
+	/**Sets whether or not this mob is currently in the arraylist held by the camera for mobs that are on screen.
+	 * @param val
+	 */
 	public void setListed(boolean val){
 		isListed = val;
 	}
+	/**Returns whether or not the player is within the aggro distance of the mob.
+	 * @param p
+	 * @return boolean
+	 */
 	public boolean withinAggroDistance(Player p){
 		Vector2f pv = p.getLocation();
 		Vector2f mv = getLocation();
@@ -324,9 +350,16 @@ public class Mob extends Agent implements IClickable {
 		}
 		return false;
 	}
+	/**Returns whether or not the mob is currently hooked on a player.
+	 * @return boolean
+	 */
 	public boolean isHooked(){
 		return isHooked;
 	}
+	/**Sets whether or not the mob is currently hooked on a player.
+	 * @param val
+	 * @param p
+	 */
 	public void setHooked(boolean val, Player p){
 		isHooked = val;
 		hookedPlayer = p;
@@ -337,6 +370,9 @@ public class Mob extends Agent implements IClickable {
 			isIdle = true;
 		}
 	}
+	/**Sets whether or not the mob is currently hooked on a player.
+	 * @param val
+	 */
 	public void setHooked(boolean val){
 		isHooked = val;
 		if (val){
@@ -346,9 +382,15 @@ public class Mob extends Agent implements IClickable {
 			isIdle = true;
 		}
 	}
+	/**Returns whether or not the mob is hostile.  Non-hostile mobs do not aggro.
+	 * @return boolean
+	 */
 	public boolean isHostile(){
 		return isHostile;
 	}
+	/**Receives damage from the player.
+	 * @param p
+	 */
 	public void takeDamage(Player p){
 		if (!isHooked){
 			setHooked(true, p);
@@ -384,9 +426,15 @@ public class Mob extends Agent implements IClickable {
 			}
 		}
 	}
+	/**Returns whether or not the mob is dead.
+	 * @return boolean
+	 */
 	public boolean isDead(){
 		return isDead;
 	}
+	/**Returns the mob's MobStat.  Use this to gain access to the mob's stats.
+	 * @return MobStat
+	 */
 	public MobStat getMobStat(){
 		return ms;
 	}
@@ -404,10 +452,16 @@ public class Mob extends Agent implements IClickable {
 		return false;
 	}
 
+	/**Returns whether or not the mob should be/has despawned by the parent Spawn object.
+	 * @return boolean
+	 */
 	public boolean isDespawned() {
 		return isDespawned;
 	}
 
+	/**Sets whether or not the mob should be despawned by the parent Spawn object.
+	 * @param isDespawned
+	 */
 	public void setDespawned(boolean isDespawned) {
 		this.isDespawned = isDespawned;
 	}

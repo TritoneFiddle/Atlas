@@ -42,6 +42,8 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 	/**Constructs an item at a specific location with the correct item information.
 	 * @param info
 	 * @param v
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public Item(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(v.x,v.y,32,32);
@@ -64,6 +66,11 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 	public void draw(Graphics g) {
 		img.draw(x,y);
 	}
+	/**Draws the item at its proper location based off the offset the camera provides.
+	 * Only draws if it should be on screen.
+	 * @param offsetX
+	 * @param offsetY
+	 */
 	public void draw(int offsetX, int offsetY){
 		float x1 = 0;
 		float y1 = 0;
@@ -114,6 +121,9 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 	public int getMaxDamage(){
 		return max;
 	}
+	/**Returns the minimum damage of this item.
+	 * @return int
+	 */
 	public int getMinDamage(){
 		return min;
 	}
@@ -139,15 +149,27 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 	 * @param parent
 	 */
 	public abstract void use(Inventory parent);
+	/**Returns the x-coordinate (in tiles) of this item.
+	 * @return int
+	 */
 	public int getTileX() {
 		return tileX;
 	}
+	/**Sets the x-coordinate (in tiles) of this item.
+	 * @param tileX
+	 */
 	public void setTileX(int tileX) {
 		this.tileX = tileX;
 	}
+	/**Returns the y-coordinate (in tiles) of this item.
+	 * @return int
+	 */
 	public int getTileY() {
 		return tileY;
 	}
+	/**Sets the y-coordinate (in tiles) of this item.
+	 * @param tileY
+	 */
 	public void setTileY(int tileY) {
 		this.tileY = tileY;
 	}
@@ -160,18 +182,34 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 			isStale = true;
 		}
 	}
+	/**Returns whether or not this item is on the ground in the world map.
+	 * @return boolean
+	 */
 	public boolean isOnGround() {
 		return isOnGround;
 	}
+	/**Sets whether or not this item is on the ground in the world map.
+	 * @param isOnGround
+	 */
 	public void setOnGround(boolean isOnGround) {
 		this.isOnGround = isOnGround;
 	}
+	/**Returns whether or not this item has become "stale", meaning that it should be garbage-collected.  Usually becomes
+	 * stale after 5 minutes.
+	 * @return boolean
+	 */
 	public boolean isStale(){
 		return isStale;
 	}
+	/**Returns whether or not the player has dropped this item from his or her inventory.
+	 * @return boolean
+	 */
 	public boolean hasDropped(){
 		return hasDropped;
 	}
+	/**Sets whether or not the player has dropped this item from his or her inventory.
+	 * @param val
+	 */
 	public void setDropped(boolean val){
 		hasDropped = val;
 	}

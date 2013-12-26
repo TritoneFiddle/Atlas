@@ -145,9 +145,15 @@ public class ItemInfo {
 		}
 		return null;
 	}
+	/**Returns the maximum damage of this item (if it is a weapon).
+	 * @return int
+	 */
 	public int getMax() {
 		return max;
 	}
+	/**Sets the maximum damage of this item (if it is a weapon).
+	 * @param max
+	 */
 	public void setMax(int max) {
 		this.max = max;
 	}

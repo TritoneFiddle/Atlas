@@ -14,6 +14,8 @@ public class Helm extends Item {
 	/**Constructs a helm item.
 	 * @param info
 	 * @param v
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public Helm(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(info, v, tileX, tileY);

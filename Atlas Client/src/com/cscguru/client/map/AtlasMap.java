@@ -19,6 +19,10 @@ import com.cscguru.client.managers.ResourceManager;
 import com.cscguru.client.ui.Log;
 import com.cscguru.client.ui.Settings;
 
+/**Handles all map operations from drawing, storing collision information, storing spawns, markers, healers, and items.
+ * @author Bryan Bennett
+ * @date Dec 26, 2013
+ */
 public class AtlasMap extends TiledMap implements IUpdatable{
 	private ResourceManager rm;
 	private Log log;
@@ -39,6 +43,11 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	private ArrayList<Item> items;
 	
 	
+	/**Initializes the map based on the string reference provided.
+	 * @param ref
+	 * @param rm
+	 * @throws SlickException
+	 */
 	public AtlasMap(String ref, ResourceManager rm) throws SlickException {
 		super(ref);
 		this.rm = rm;
@@ -200,9 +209,16 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	public ArrayList<Spawn> getSpawns(){
 		return spawns;
 	}
+	/**Returns the total number of spawns on the map.
+	 * @return int
+	 */
 	public int getTotalSpawns(){
 		return totalSpawns;
 	}
+	/**Runs the loot table contained in the resource manager.  If this resource manager generates an item based on
+	 * randomized chance, an item drops onto the map.
+	 * @param m
+	 */
 	public void runLootTable(Mob m){
 		int mlvl = m.getMobStat().getLevel();
 		Vector2f v = new Vector2f(m.getTileX() * 16 + Settings.CAM_X, m.getTileY() * 16 + Settings.CAM_Y);
@@ -215,9 +231,16 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 			}
 		}
 	}
+	/**Returns the array list containing all items on the ground on the map.
+	 * @return ArrayList<Item>
+	 */
 	public ArrayList<Item> getItemList(){
 		return items;
 	}
+	/**Returns whether or not the player is next to a healer on the map, such as a well.
+	 * @param p
+	 * @return boolean
+	 */
 	public boolean isHealing(Player p){
 		for (int i = 0; i < healers.size(); i++){
 			Healer heals = healers.get(i);
@@ -242,12 +265,21 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 		}
 		return false;
 	}
+	/**Returns the instance of the Log class this map holds.
+	 * @return Log
+	 */
 	public Log getLog(){
 		return log;
 	}
+	/**Returns the current zone the player is in.
+	 * @return String
+	 */
 	public String getZone(){
 		return zone;
 	}
+	/**Checks the zone the player is in and if a new one is found, sets the new zone.
+	 * @param p
+	 */
 	public void checkZone(Player p){
 		for (int i = 0; i < markers.size(); i++){
 			AreaMarker marks = markers.get(i);
@@ -272,12 +304,21 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 			}
 		}
 	}
+	/**Adds an item to the map.  Used in conjunction with the inventory when dropping items.
+	 * @param item
+	 */
 	public void addItem(Item item){
 		items.add(item);
 	}
+	/**Sets the loot chance of items to drop.  Testing purposes only.
+	 * @param k
+	 */
 	public void setLootChance(int k){
 		lootChance = k;
 	}
+	/**Returns the loot chance of items to drop.
+	 * @return int
+	 */
 	public int getLootChance(){
 		return lootChance;
 	}

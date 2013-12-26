@@ -9,14 +9,27 @@ import com.cscguru.client.states.AtlasLogin;
 import com.cscguru.client.states.CharacterCreation;
 import com.cscguru.client.ui.Settings;
 
-/**Starts the state-based game Atlas. t
+/**Starts the state-based game Atlas.
  * @author Bryan Bennett
  * @date 12/1/2013
  */
 public class AtlasClient extends StateBasedGame {
+	/**
+	 * String that holds the name of the game.  Also the string that appears in the title bar when running 
+	 * in windowed mode.
+	 */
 	public static final String gamename = "Atlas";
+	/**
+	 * Numeric value that identifies the login game state.
+	 */
 	public static final int login = 0;
+	/**
+	 * Numeric value that identifies the character creation screen.
+	 */
 	public static final int charCreation = 1;
+	/**
+	 * Numeric value that identifies the main game state.
+	 */
 	public static final int main = 2;
 
 	/**Constructor for the game.
@@ -29,7 +42,7 @@ public class AtlasClient extends StateBasedGame {
 		//this.addState(new AtlasMain(main));
 	}
 
-	/**Starts the game.
+	/**Starts the game.  Initializes the application game container.
 	 * @param args
 	 * @throws SlickException
 	 */
@@ -38,6 +51,9 @@ public class AtlasClient extends StateBasedGame {
 		appgc.setDisplayMode(Settings.RES_W, Settings.RES_H,true);
 		appgc.setUpdateOnlyWhenVisible(false);
 		appgc.setShowFPS(false);
+		/**
+		 * setVSync(true) gets rid of shearing.
+		 */
 		appgc.setVSync(true);
 		appgc.setTargetFrameRate(60);
 		appgc.start();

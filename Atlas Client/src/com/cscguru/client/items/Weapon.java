@@ -13,6 +13,8 @@ public class Weapon extends Item{
 	/**Constructs a weapon item.
 	 * @param info
 	 * @param v
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public Weapon(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(info, v, tileX, tileY);

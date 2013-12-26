@@ -13,6 +13,8 @@ public class Boots extends Item{
 	/**Constructs
 	 * @param info
 	 * @param v 
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public Boots(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(info, v, tileX, tileY);

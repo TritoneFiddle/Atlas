@@ -10,6 +10,10 @@ import com.cscguru.client.entities.Sprite;
 import com.cscguru.client.interfaces.IUpdatable;
 import com.cscguru.client.ui.Log;
 
+/**Handles Spawn map objects.  Class handles the spawning and generation of mobs.
+ * @author Bryan Bennett
+ * @date Dec 26, 2013
+ */
 public class Spawn extends Rectangle implements IUpdatable{
 	private static final long serialVersionUID = 1L;
 	private int tileX;
@@ -24,6 +28,13 @@ public class Spawn extends Rectangle implements IUpdatable{
 	private AtlasMap tmx;
 	private Log log;
 
+	/**Initializes a spawner at a specific location and generates a mob.
+	 * @param x
+	 * @param y
+	 * @param ss
+	 * @param ms
+	 * @param tmx
+	 */
 	public Spawn(float x, float y, Sprite ss, MobStat ms, AtlasMap tmx) {
 		super(x, y, 16, 16);
 		log = tmx.getLog();
@@ -90,12 +101,25 @@ public class Spawn extends Rectangle implements IUpdatable{
 	public Mob getMob(){
 		return mob;
 	}
+	/**Returns whether or not the spawner currently has a mob.
+	 * @return boolean
+	 */
 	public boolean hasMob(){
 		return hasMob;
 	}
+	/**Returns whether or not the mob can move.  Provides access to the map for mob collision detection.
+	 * @return boolean
+	 */
 	public boolean canMove(){
 		return tmx.canMove(mob);
 	}
+	/**Checks the range of the mob from the spawner.  Mobs must stay within a certain distance
+	 * of the spawner when not hooked onto a player.
+	 * @param tileX
+	 * @param tileY
+	 * @param face
+	 * @return boolean
+	 */
 	public boolean checkRange(int tileX, int tileY, Facing face){
 		int k = 0;
 		if (face == Facing.EAST || face == Facing.WEST){
@@ -109,6 +133,9 @@ public class Spawn extends Rectangle implements IUpdatable{
 		}
 		return false;
 	}
+	/**Returns an instance of the Log this spawner contains.
+	 * @return Log
+	 */
 	public Log getLog(){
 		return log;
 	}

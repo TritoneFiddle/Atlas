@@ -46,6 +46,12 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	private ArrayList<Mob> mobs;
 	
 
+	/**Initializes an instance of the camera object based on the origin and offset coordinates.
+	 * @param origin
+	 * @param offset
+	 * @param map
+	 * @param p
+	 */
 	public Camera(Vector2f origin, Vector2f offset, AtlasMap map, Player p){
 		super(origin, Settings.CAM_H, Settings.CAM_W);
 		this.origin = origin;
@@ -204,6 +210,9 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 		}
 		isMoving = true;
 	}
+	/**Checks to see if the player has collided with a mob on-screen.
+	 * @return boolean
+	 */
 	public boolean checkMobCollision(){
 		for (int i = 0; i < mobs.size(); i++){
 			Mob m = mobs.get(i);
@@ -224,9 +233,15 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 		}
 		return false;
 	}
+	/**Returns the day and night cycle.
+	 * @return Cycle
+	 */
 	public Cycle getCycle(){
 		return c;
 	}
+	/**Returns an array list containing all the mobs currently on the screen.
+	 * @return ArrayList<Mob>
+	 */
 	public ArrayList<Mob> getMobsOnScreen(){
 		return mobs;
 	}

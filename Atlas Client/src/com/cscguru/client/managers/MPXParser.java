@@ -7,10 +7,18 @@ import java.util.Scanner;
 
 import com.cscguru.client.entities.MobStat;
 
+/**Handles the parsing of .MPX files created from Mob Factory.
+ * @author Bryan Bennett
+ * @date Dec 26, 2013
+ */
 public class MPXParser {
 	private HashMap<String, MobStat> map;
 	private String path;
 	
+	/**Initializes and parses the .MPX file based on the reference string.
+	 * @param ref
+	 * @throws FileNotFoundException
+	 */
 	public MPXParser(String ref) throws FileNotFoundException{
 		path = ref;
 		map = new HashMap<String, MobStat>();
@@ -54,6 +62,10 @@ public class MPXParser {
 		}
 		s.close();
 	}
+	/**Returns the MobStat that holds all necessary information for a mob based on the reference string.
+	 * @param ref
+	 * @return MobStat
+	 */
 	public MobStat getMobStat(String ref){
 		return map.get(ref);
 	}

@@ -82,6 +82,8 @@ public class ResourceManager {
 		/**Returns an item based on the level of the monster kills and places it at the vector the monster was killed at.
 		 * @param monsterLevel
 		 * @param v
+		 * @param tileX 
+		 * @param tileY 
 		 * @return Item
 		 */
 		public Item getItem(int monsterLevel, Vector2f v, int tileX, int tileY){
@@ -269,6 +271,9 @@ public class ResourceManager {
 		public void setGui(Gui g){
 			this.gui = g;
 		}
+		/**Returns the Log instance contained in this class.
+		 * @return Log
+		 */
 		public Log getLog(){
 			return log;
 		}
@@ -287,6 +292,10 @@ public class ResourceManager {
 			}
 			System.out.println("\n\n\n");
 		}
+		/**Returns the MobStat based on the reference string.
+		 * @param ref
+		 * @return MobStat
+		 */
 		public MobStat getMobStat(String ref){
 			return mpx.getMobStat(ref);
 		}

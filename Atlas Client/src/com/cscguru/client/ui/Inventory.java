@@ -233,6 +233,9 @@ public class Inventory extends BoundBox implements IDrawable{
 	public ArrayList<InventoryBox> getEquipment(){
 		return equipped;
 	}
+	/**Transfers the item from the inventory box to the map.
+	 * @param item
+	 */
 	public void itemDropped(Item item){
 		AtlasMap map = rm.getMap("World_1.tmx");
 		item.setX(p.getX());
@@ -241,6 +244,9 @@ public class Inventory extends BoundBox implements IDrawable{
 		item.setTileY(p.getTileY());
 		map.addItem(item);
 	}
+	/**Returns the player's info.
+	 * @return PlayerInfo
+	 */
 	public PlayerInfo getPlayerInfo(){
 		return p.getInfo();
 	}

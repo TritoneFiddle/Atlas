@@ -14,6 +14,8 @@ public class OffHand extends Item{
 	/**Constructs an offhand item.
 	 * @param info
 	 * @param v
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public OffHand(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(info, v, tileX, tileY);

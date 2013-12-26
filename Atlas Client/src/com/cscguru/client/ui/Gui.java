@@ -8,7 +8,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.state.StateBasedGame;
 
 import com.cscguru.client.entities.Player;
 import com.cscguru.client.entities.PlayerInfo;
@@ -42,6 +41,9 @@ public class Gui implements IDrawable,IClickable{
 	
 	/**Constructs a GUI object to handle most of the drawing of the user interface and keeps a reference of the camera object.
 	 * @param rm 
+	 * @param c 
+	 * @param p 
+	 * @param log 
 	 * @throws SlickException
 	 * @throws FileNotFoundException
 	 */
@@ -195,6 +197,9 @@ public class Gui implements IDrawable,IClickable{
 		}
 		stats.equippedStats(minDmg, maxDmg, totalArmor, totalHealth);
 	}
+	/**Sets the current zone to display.
+	 * @param s
+	 */
 	public void setZone(String s){
 		zone = s;
 	}

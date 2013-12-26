@@ -11,12 +11,20 @@ import org.newdawn.slick.SlickException;
 import com.cscguru.client.entities.PlayerInfo;
 import com.cscguru.client.interfaces.IDrawable;
 
+/**Handles the displaying of the player's stat screen.
+ * @author Bryan Bennett
+ * @date Dec 26, 2013
+ */
 public class StatScreen implements IDrawable{
 	private PlayerInfo info;
 	private int alignX = 43;
 	private boolean isVisible = false;
 	private DecimalFormat df;
 	
+	/**Initializes the stat screen.
+	 * @param info
+	 * @throws SlickException
+	 */
 	public StatScreen(PlayerInfo info) throws SlickException{
 		this.info = info;
 		df = new DecimalFormat("#.##");
@@ -53,12 +61,22 @@ public class StatScreen implements IDrawable{
 			g.drawString(df.format(k) + "%", alignX + 100, 430);
 		}
 	}
+	/**Since the player can swap out items at any moment, this method actively sets the stats based on
+	 * the items the player has equipped.
+	 * @param minDmg
+	 * @param maxDmg
+	 * @param armor
+	 * @param plusHP
+	 */
 	public void equippedStats(int minDmg, int maxDmg, int armor, int plusHP){
 		info.setMinDmg(minDmg);
 		info.setMaxDmg(maxDmg);
 		info.setArmor(armor);
 		info.modifyMaxHP(plusHP);
 	}
+	/**Sets whether or not the stat screen is visible.
+	 * @param val
+	 */
 	public void setVisible(boolean val){
 		isVisible = val;
 	}

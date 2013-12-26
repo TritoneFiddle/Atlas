@@ -14,6 +14,8 @@ public class Armor extends Item{
 	/**Constructs an armor item.
 	 * @param info
 	 * @param v
+	 * @param tileX 
+	 * @param tileY 
 	 */
 	public Armor(ItemInfo info, Vector2f v, int tileX, int tileY) {
 		super(info, v, tileX, tileY);

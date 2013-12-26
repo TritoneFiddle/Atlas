@@ -23,17 +23,38 @@ public abstract class Agent extends Entity implements IUpdatable{
 	protected Actor actor;
 	protected Animation anim;
 
+	/**Initializes an agent based on the passed parameters.  Constructor also creates an actor
+	 * using the sprite parameter.  Sets the default facing value to Facing.SOUTH.  Also constructs 
+	 * the hitboxes (bumpers) used for collision detection.  This constructor is primarily used for players.
+	 * @param x
+	 * @param y
+	 * @param tileX
+	 * @param tileY
+	 * @param ss
+	 */
 	public Agent(float x, float y, int tileX, int tileY,Sprite ss) {
 		super(x, y, ss.getSpriteWidth()  * 16, ss.getSpriteHeight() * 16);
 		actor = new Actor(ss);
 		this.tileX = tileX;
 		this.tileY = tileY;
+		
+		//bumpers
 		left = new Rectangle(x - 8, y + 8, 8,16);
 		right = new Rectangle(x + 32, y + 8, 8,16);
 		up = new Rectangle(x + 8, y - 8, 16,8);
 		down = new Rectangle(x + 8, y + 32, 16,8);
+		
+		
 		setFacing(Facing.SOUTH);
 	}
+	/**Initializes an agent based on the passed parameters.  Constructor stores the actor passed in.  Sets the default facing value to Facing.SOUTH.  Also constructs 
+	 * the hitboxes (bumpers) used for collision detection.  This constructor primarily used for mobs.
+	 * @param x
+	 * @param y
+	 * @param tileX
+	 * @param tileY
+	 * @param actor
+	 */
 	public Agent(float x, float y, int tileX, int tileY,Actor actor) {
 		super(x, y, actor.getSpriteWidth() * 16, actor.getSpriteHeight() * 16);
 		this.actor = actor;
@@ -45,10 +66,14 @@ public abstract class Agent extends Entity implements IUpdatable{
 		if (h > 32){
 			mod = 16;
 		}
+		
+		//bumpers
 		left = new Rectangle(x - 8, y + 8, 8,h/2 + mod);
 		right = new Rectangle(x + w, y + 8, 8,h/2 + mod);
 		up = new Rectangle(x + 8, y - 8, w/2 + mod,8);
 		down = new Rectangle(x + 8, y + h, w/2 + mod,8);
+		
+		
 		setFacing(Facing.SOUTH);
 	}
 	
@@ -105,12 +130,23 @@ public abstract class Agent extends Entity implements IUpdatable{
 	public Facing getFacing(){
 		return face;
 	}
+	/**Returns the current bumper based on the current facing value of the agent.
+	 * @return Rectangle
+	 */
 	public Rectangle getHitBox(){
 		return hitBox;
 	}
+	/**Returns the actor class that holds the agent's animations.
+	 * @return Actor
+	 */
 	public Actor getActor(){
 		return actor;
 	}
+	/**Overridable method that draws the sprite based on the current camera offset.
+	 * @param g
+	 * @param offsetX
+	 * @param offsetY
+	 */
 	public abstract void draw(Graphics g, int offsetX, int offsetY);
 
 }
