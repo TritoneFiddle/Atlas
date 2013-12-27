@@ -3,15 +3,16 @@ package com.cscguru.client.entities;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
+
 import com.cscguru.client.interfaces.IClickable;
 import com.cscguru.client.map.Spawn;
 import com.cscguru.client.ui.Log;
 import com.cscguru.client.ui.Settings;
-import com.cscguru.com.balance.Balance;
 /**Base mob class.  Handles movement, behavior, drawing, and storing of mob information.
  * @author Bryan Bennett
  * @date Dec 26, 2013

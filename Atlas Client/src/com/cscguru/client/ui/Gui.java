@@ -9,13 +9,13 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.cscguru.client.entities.Balance;
 import com.cscguru.client.entities.Player;
 import com.cscguru.client.entities.PlayerInfo;
 import com.cscguru.client.interfaces.IClickable;
 import com.cscguru.client.interfaces.IDrawable;
 import com.cscguru.client.items.Item;
 import com.cscguru.client.managers.ResourceManager;
-import com.cscguru.com.balance.Balance;
 
 /**Handles the gui elements of the game.
  * @author Bryan Bennett

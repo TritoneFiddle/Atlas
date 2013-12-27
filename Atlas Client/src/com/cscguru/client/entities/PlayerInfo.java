@@ -8,7 +8,6 @@ import org.newdawn.slick.Color;
 
 import com.cscguru.client.enums.CType;
 import com.cscguru.client.ui.Log;
-import com.cscguru.com.balance.Balance;
 
 /**Holds the information that pertains to a player such as the player's health, 
  * mana, stamina, damage, armor, and more.

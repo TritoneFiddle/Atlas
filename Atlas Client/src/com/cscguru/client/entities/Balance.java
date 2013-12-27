@@ -1,4 +1,4 @@
-package com.cscguru.com.balance;
+package com.cscguru.client.entities;
 
 /**Static class for class balances.
  * @author Bryan Bennett
