@@ -47,6 +47,7 @@ public class AtlasClient extends StateBasedGame {
 	 * @throws SlickException
 	 */
 	public static void main(String[] args) throws SlickException {
+		System.out.println(System.getProperty("java.library.path"));
 		AppGameContainer appgc = new AppGameContainer(new AtlasClient(gamename));
 		appgc.setDisplayMode(Settings.RES_W, Settings.RES_H,true);
 		appgc.setUpdateOnlyWhenVisible(false);
