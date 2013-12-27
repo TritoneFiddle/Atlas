@@ -69,7 +69,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	 * Changes the map.
 	 */
 	public void changeMap(){
-		//TODO
+		//TODO change map when player enters a building or dungeon
 	}
 	@Override
 	public boolean checkMouseHover(Vector2f v) {

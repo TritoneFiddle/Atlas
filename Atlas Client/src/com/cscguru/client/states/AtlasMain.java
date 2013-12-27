@@ -56,7 +56,6 @@ public class AtlasMain extends BasicGameState {
 		try {
 			gui = new Gui(rm, cam.getCycle(), p, rm.getLog());
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

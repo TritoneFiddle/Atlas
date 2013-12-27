@@ -54,7 +54,6 @@ public class CharacterCreation extends BasicGameState {
 		try {
 			rm = new ResourceManager();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		knight = rm.getSprite("knight.png").getSubImage(0, 0,32,32);

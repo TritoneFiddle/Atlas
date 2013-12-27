@@ -194,12 +194,13 @@ public class PlayerInfo {
 			if (type == CType.KNIGHT){
 				maxHP = maxHP * Balance.HP_RATIO_K;
 				maxMP = maxMP * Balance.MP_RATIO_K;
+				//TODO level up for knight
 			}
 			else if (type == CType.MAGE){
-				//TODO
+				//TODO level up for mage
 			}
 			else{
-				//TODO
+				//TODO level up for thief
 			}
 			level += 1;
 			log.writeToLog("You are now level " + level + "!", Color.magenta);

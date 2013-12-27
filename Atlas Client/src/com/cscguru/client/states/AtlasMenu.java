@@ -22,19 +22,19 @@ public class AtlasMenu extends BasicGameState {
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		// TODO Auto-generated method stub
+		// TODO init for menu gamestate.
 		
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
+		// TODO render for menu gamestate.
 		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		// TODO Auto-generated method stub
+		// TODO update for menu gamestate.
 		
 	}
 

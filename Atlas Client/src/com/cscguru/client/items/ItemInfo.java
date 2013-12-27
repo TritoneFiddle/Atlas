@@ -141,7 +141,7 @@ public class ItemInfo {
 			return new Weapon(this,v,0,0);
 		}
 		else{
-			//TODO
+			//TODO add more item types
 		}
 		return null;
 	}
