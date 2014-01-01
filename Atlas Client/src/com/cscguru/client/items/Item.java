@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
 import com.cscguru.client.enums.ItemType;
 import com.cscguru.client.enums.Quality;
 import com.cscguru.client.interfaces.IDrawable;
+import com.cscguru.client.interfaces.ITiled;
 import com.cscguru.client.interfaces.ITipped;
 import com.cscguru.client.interfaces.IUpdatable;
 import com.cscguru.client.ui.Inventory;
@@ -17,7 +18,7 @@ import com.cscguru.client.ui.Settings;
  * @author Bryan Bennett
  * @date Dec 1, 2013
  */
-public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpdatable{
+public abstract class Item extends Rectangle implements IDrawable, ITiled, ITipped, IUpdatable{
 	private static final long serialVersionUID = 1L;
 	protected int lvlReq;
 	protected int value;
@@ -85,6 +86,10 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 		setY(y1);
 		img.draw(x1,y1);
 	}
+	@Override
+	public void draw(Graphics g, int offsetX, int offsetY){
+		//Nothing.
+	}
 	/**Returns the ItemType of the item.
 	 * @return ItemType
 	 */
@@ -149,27 +154,19 @@ public abstract class Item extends Rectangle implements IDrawable,ITipped, IUpda
 	 * @param parent
 	 */
 	public abstract void use(Inventory parent);
-	/**Returns the x-coordinate (in tiles) of this item.
-	 * @return int
-	 */
+	@Override
 	public int getTileX() {
 		return tileX;
 	}
-	/**Sets the x-coordinate (in tiles) of this item.
-	 * @param tileX
-	 */
+	@Override
 	public void setTileX(int tileX) {
 		this.tileX = tileX;
 	}
-	/**Returns the y-coordinate (in tiles) of this item.
-	 * @return int
-	 */
+	@Override
 	public int getTileY() {
 		return tileY;
 	}
-	/**Sets the y-coordinate (in tiles) of this item.
-	 * @param tileY
-	 */
+	@Override
 	public void setTileY(int tileY) {
 		this.tileY = tileY;
 	}

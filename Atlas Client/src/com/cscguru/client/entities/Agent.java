@@ -1,16 +1,16 @@
 package com.cscguru.client.entities;
 
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
+import com.cscguru.client.interfaces.ITiled;
 import com.cscguru.client.interfaces.IUpdatable;
 
 /**Abstract class used for players and mobs.
  * @author Bryan Bennett
  * @date Dec 12, 2013
  */
-public abstract class Agent extends Entity implements IUpdatable{
+public abstract class Agent extends Entity implements IUpdatable, ITiled{
 	static final long serialVersionUID = 1L;
 	protected int tileX;
 	protected int tileY;
@@ -78,30 +78,22 @@ public abstract class Agent extends Entity implements IUpdatable{
 	}
 	
 
-	/**Returns the x-coordinate for the tile the agent is at.
-	 * @return int
-	 */
+	@Override
 	public int getTileX() {
 		return tileX;
 	}
 
-	/**Sets the x-coordinate (in tiles) for the agent.
-	 * @param tileX
-	 */
+	@Override
 	public void setTileX(int tileX) {
 		this.tileX = tileX;
 	}
 
-	/**Returns the y-coordinate for the tile the agent is at.
-	 * @return int
-	 */
+	@Override
 	public int getTileY() {
 		return tileY;
 	}
 
-	/**Sets the y-coordinate (in tiles) for the agent.
-	 * @param tileY
-	 */
+	@Override
 	public void setTileY(int tileY) {
 		this.tileY = tileY;
 	}
@@ -142,11 +134,4 @@ public abstract class Agent extends Entity implements IUpdatable{
 	public Actor getActor(){
 		return actor;
 	}
-	/**Overridable method that draws the sprite based on the current camera offset.
-	 * @param g
-	 * @param offsetX
-	 * @param offsetY
-	 */
-	public abstract void draw(Graphics g, int offsetX, int offsetY);
-
 }

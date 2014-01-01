@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
@@ -31,6 +33,8 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	private int tileY = 0;
 	private Player p;
 	private Cycle c;
+	private Image cloud;
+	private Image light;
 	
 	//movement
 	private float offsetX = 0;
@@ -55,6 +59,13 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	public Camera(Vector2f origin, Vector2f offset, AtlasMap map, Player p){
 		super(origin, Settings.CAM_H, Settings.CAM_W);
 		this.origin = origin;
+		try {
+			cloud = new Image("res/gfx/cloud1.png");
+			light = new Image("res/gfx/light.png");
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		c = new Cycle();
 		tileX = (int)offset.x;
 		tileY = (int)offset.y;
@@ -126,8 +137,21 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 3, false);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 4, false);
 				g.translate(offset_X *-1, offset_Y*-1);	//resets the graphics translation.
+				Image i = null;
+				try {
+					i = new Image(256,256);
+				} catch (SlickException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				g.copyArea(i, Settings.CAM_X+ 100, Settings.CAM_Y + 100);
 				g.setColor(new Color(0,0,0,c.getAlpha()));
 				g.fillRect(Settings.CAM_X + 16, Settings.CAM_Y + 16, 640, 640);
+				//g.setDrawMode(Graphics.MODE_SCREEN);
+				i.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100);
+				light.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100, new Color(0,0,0,c.getAlpha()));
+				g.setDrawMode(Graphics.MODE_NORMAL);
+				//cloud.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100, new Color(0,0,0,.35f));
 				drawBackground = true;
 			}
 		}
