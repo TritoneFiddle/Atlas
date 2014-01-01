@@ -1,12 +1,15 @@
 package com.cscguru.client.map;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
+
+import com.cscguru.client.interfaces.ITiled;
 
 /**Handles all map objects that heal agents.
  * @author Bryan Bennett
  * @date Dec 26, 2013
  */
-public class Healer extends Rectangle {
+public class Healer extends Rectangle implements ITiled{
 	private static final long serialVersionUID = 1L;
 	private int tileX;
 	private int tileY;
@@ -23,29 +26,25 @@ public class Healer extends Rectangle {
 		this.setTileX(tileX);
 		this.setTileY(tileY);
 	}
-	/**Returns the x-coordinate (in tiles) of the healer.
-	 * @return int
-	 */
+	@Override
 	public int getTileX() {
 		return tileX;
 	}
-	/**Sets the x-coordinate (in tiles) of the healer.
-	 * @param tileX
-	 */
+	@Override
 	public void setTileX(int tileX) {
 		this.tileX = tileX;
 	}
-	/**Returns the y-coordinate (in tiles) of the healer.
-	 * @return int
-	 */
+	@Override
 	public int getTileY() {
 		return tileY;
 	}
-	/**Sets the y-coordinate (in tiles) of the healer.
-	 * @param tileY
-	 */
+	@Override
 	public void setTileY(int tileY) {
 		this.tileY = tileY;
+	}
+	@Override
+	public void draw(Graphics g, int offsetX, int offsetY) {
+		// Nothing
 	}
 
 }

@@ -7,7 +7,7 @@ import org.newdawn.slick.geom.Rectangle;
  * @author Bryan Bennett
  * @date Dec 26, 2013
  */
-public class AreaMarker {
+public class AreaMarker{
 	private String name;
 	private int tileX;
 	private int tileY;
@@ -40,13 +40,13 @@ public class AreaMarker {
 	public String getName(){
 		return name;
 	}
-	/**Returns the x-coordinate (in tiles) of this marker.
+	/**Returns the x-coordinate in tiles.
 	 * @return int
 	 */
 	public int getTileX(){
 		return tileX;
 	}
-	/**Returns the y-coordinate (in tiles) of this marker.
+	/**Returns the y-coordinate in tiles.
 	 * @return int
 	 */
 	public int getTileY(){

@@ -1,4 +1,4 @@
-package com.cscguru.client.map;
+package com.cscguru.client.enums;
 
 /**Enum that provides a way to identify tile types.
  * @author Bryan Bennett
