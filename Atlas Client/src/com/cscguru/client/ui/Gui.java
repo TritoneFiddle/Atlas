@@ -71,10 +71,10 @@ public class Gui implements IDrawable,IClickable{
 	public void draw(Graphics g) {
 		//seals the edges so nothing is shown beyond the border
 		g.setColor(Color.black);
-		g.fillRect(Settings.CAM_X - 64, Settings.CAM_Y, 64, 640);
-		g.fillRect(Settings.CAM_X + Settings.CAM_W, Settings.CAM_Y, 64, 640);
-		g.fillRect(Settings.CAM_X, Settings.CAM_Y + 672, 640, 200);
-		g.fillRect(Settings.CAM_X, Settings.CAM_Y - 50, 680, 50);
+		g.fillRect(0, 0, Settings.CAM_X, 900);
+		g.fillRect(Settings.CAM_X, 0, 700, Settings.CAM_Y);
+		g.fillRect(Settings.CAM_X, Settings.CAM_Y + 672, 700, 200);
+		g.fillRect(Settings.CAM_X + Settings.CAM_W, 0, 1600 - Settings.CAM_X + Settings.CAM_W, 900);
 		//center piece
 		g.setColor(new Color(117,101,3));
 		float width = (float) (info.getXp() / info.getMaxXP());
