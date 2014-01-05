@@ -3,6 +3,7 @@ package com.cscguru.client.map;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
@@ -342,5 +343,35 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	public int getNumberOfLights(){
 		return numLights;
 	}
-
+	/**Draws the lights on the map.
+	 * @param g
+	 * @param camX 
+	 * @param camY 
+	 * @param alpha 
+	 */
+	public void drawLights(Graphics g, int camX, int camY, float alpha){
+		int x = camX - 20;
+		int y = camY - 20;
+		int maxX = camX + 60;
+		int maxY = camY + 60;
+		if (x < 0){
+			x = 0;
+		}
+		if (maxX >= getWidth()){
+			maxX = getWidth() - 1;
+		}
+		if (y < 0){
+			y = 0;
+		}
+		if (maxY >= getHeight()){
+			maxY = getHeight() - 1;
+		}
+		for (int i = x;i <= maxX; i++){
+			for (int j = y; j <= maxY; j++){
+				if (lights[i][j] != null){
+					lights[i][j].draw(g, camX,camY,alpha);
+				}
+			}
+		}
+	}
 }

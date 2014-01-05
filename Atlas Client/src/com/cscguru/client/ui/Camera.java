@@ -16,7 +16,6 @@ import com.cscguru.client.interfaces.IDrawable;
 import com.cscguru.client.interfaces.IUpdatable;
 import com.cscguru.client.items.Item;
 import com.cscguru.client.map.AtlasMap;
-import com.cscguru.client.map.LightNode;
 import com.cscguru.client.map.Spawn;
 /**
  * Handles the display of the world map.
@@ -133,31 +132,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				g.clearAlphaMap();
 				g.setColor(new Color(255,255,255,c.getAlpha()));
 				g.fillRect(Settings.CAM_X, Settings.CAM_Y, 672, 672);
-				LightNode[][] lights = map.getLights();
-				int x = tileX - 20;
-				int y = tileY - 20;
-				int maxX = tileX + 60;
-				int maxY = tileY + 60;
-				if (x < 0){
-					x = 0;
-				}
-				if (maxX >= map.getWidth()){
-					maxX = map.getWidth() - 1;
-				}
-				if (y < 0){
-					y = 0;
-				}
-				if (maxY >= map.getHeight()){
-					maxY = map.getHeight() - 1;
-				}
-				for (int i = x;i <= maxX; i++){
-					for (int j = y; j <= maxY; j++){
-						if (lights[i][j] != null){
-							lights[i][j].draw(g, tileX,tileY,c.getAlpha());
-						}
-					}
-				}
-				
+				map.drawLights(g, tileX, tileY, c.getAlpha());		
 				g.translate((int)offset_X *-1,(int) offset_Y*-1);	//resets the graphics translation.
 				
 				g.setDrawMode(Graphics.MODE_ALPHA_BLEND);
