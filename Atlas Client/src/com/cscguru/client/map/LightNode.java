@@ -1,10 +1,8 @@
 package com.cscguru.client.map;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
 
 import com.cscguru.client.interfaces.ITiled;
 import com.cscguru.client.ui.Settings;
@@ -53,8 +51,7 @@ public class LightNode implements ITiled {
 			int diffX = (tileX - camX) * 16 + Settings.CAM_X;
 			int diffY = (tileY - camY) * 16 + Settings.CAM_Y;
 			i.draw(diffX - offsetX, diffY - offsetY);
-		}
-		
+		}		
 	}
 
 	@Override

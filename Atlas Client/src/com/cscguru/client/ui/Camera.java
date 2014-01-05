@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
@@ -34,7 +33,6 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	private int tileY = 0;
 	private Player p;
 	private Cycle c;
-	private LightNode light;
 	
 	//movement
 	private float offsetX = 0;
@@ -68,12 +66,6 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 		spawns = map.getSpawns();
 		mobs = new ArrayList<Mob>();
 		this.p = p;
-		try {
-			light = new LightNode(62,143);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	/**
 	 * Changes the map.
@@ -142,8 +134,24 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				g.setColor(new Color(255,255,255,c.getAlpha()));
 				g.fillRect(Settings.CAM_X, Settings.CAM_Y, 672, 672);
 				LightNode[][] lights = map.getLights();
-				for (int i = tileX - 20; i <= tileX + 60; i++){
-					for (int j = tileY - 20; j <= tileY + 60; j++){
+				int x = tileX - 20;
+				int y = tileY - 20;
+				int maxX = tileX + 60;
+				int maxY = tileY + 60;
+				if (x < 0){
+					x = 0;
+				}
+				if (maxX >= map.getWidth()){
+					maxX = map.getWidth() - 1;
+				}
+				if (y < 0){
+					y = 0;
+				}
+				if (maxY >= map.getHeight()){
+					maxY = map.getHeight() - 1;
+				}
+				for (int i = x;i <= maxX; i++){
+					for (int j = y; j <= maxY; j++){
 						if (lights[i][j] != null){
 							lights[i][j].draw(g, tileX,tileY,c.getAlpha());
 						}

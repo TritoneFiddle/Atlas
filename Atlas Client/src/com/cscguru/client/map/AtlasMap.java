@@ -38,6 +38,7 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	private ArrayList<AreaMarker> markers;
 	private ArrayList<Healer> healers;
 	private LightNode[][] lights;
+	private int numLights = 0;
 	private int totalSpawns;
 	private int lootChance = 90;
 	
@@ -69,6 +70,7 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 				if (tileID == collisionID + 4){
 					LightNode light = new LightNode(j,i);
 					lights[j][i] = light;
+					numLights += 1;
 				}
 			}
 		}
@@ -333,6 +335,12 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	 */
 	public LightNode[][] getLights(){
 		return lights;
+	}
+	/**Returns the total number of lights on the entire map.
+	 * @return int
+	 */
+	public int getNumberOfLights(){
+		return numLights;
 	}
 
 }

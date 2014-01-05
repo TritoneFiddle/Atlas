@@ -66,7 +66,7 @@ public class AtlasMain extends BasicGameState {
 		gui.draw(g);
 		if (showDebug){
 			boolean val = p.isInvincible();
-			g.drawString("X: " + mouseX + "  Y: " + mouseY + "\nX: " + (mouseX - 470) + "  Y: " + (mouseY - 207) + "\nTileX: " + p.getTileX() + " TileY: " + p.getTileY() + "\nTotal Spawns: " + map.getTotalSpawns() + "\nTotal Items: " + map.getItemList().size() + "\nInvincibility: " + val + "\nLoot Chance: " + map.getLootChance(), mouseX + 25, mouseY );
+			g.drawString("X: " + mouseX + "  Y: " + mouseY + "\nX: " + (mouseX - 470) + "  Y: " + (mouseY - 207) + "\nTileX: " + p.getTileX() + " TileY: " + p.getTileY() + "\nTotal Spawns: " + map.getTotalSpawns() + "\nTotal Items: " + map.getItemList().size() + "\nInvincibility: " + val + "\nLoot Chance: " + map.getLootChance() + "\nLights: " + map.getNumberOfLights(), mouseX + 25, mouseY );
 		}
 	}
 
