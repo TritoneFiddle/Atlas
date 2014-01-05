@@ -1,8 +1,6 @@
 package com.cscguru.client.states;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -66,7 +64,6 @@ public class AtlasMain extends BasicGameState {
 		p.draw(g, 0,0);
 		cam.draw(g);
 		gui.draw(g);
-		g.setColor(Color.white);
 		if (showDebug){
 			boolean val = p.isInvincible();
 			g.drawString("X: " + mouseX + "  Y: " + mouseY + "\nX: " + (mouseX - 470) + "  Y: " + (mouseY - 207) + "\nTileX: " + p.getTileX() + " TileY: " + p.getTileY() + "\nTotal Spawns: " + map.getTotalSpawns() + "\nTotal Items: " + map.getItemList().size() + "\nInvincibility: " + val + "\nLoot Chance: " + map.getLootChance(), mouseX + 25, mouseY );

@@ -37,6 +37,7 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	private ArrayList<Spawn> spawns;
 	private ArrayList<AreaMarker> markers;
 	private ArrayList<Healer> healers;
+	private LightNode[][] lights;
 	private int totalSpawns;
 	private int lootChance = 90;
 	
@@ -321,6 +322,12 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	 */
 	public int getLootChance(){
 		return lootChance;
+	}
+	/**Returns all the light nodes on the map.
+	 * @return ArrayList<LightNode>
+	 */
+	public LightNode[][] getLights(){
+		return lights;
 	}
 
 }

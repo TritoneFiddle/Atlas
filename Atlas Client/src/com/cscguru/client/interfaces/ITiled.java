@@ -10,10 +10,10 @@ public interface ITiled {
 
 	/**Overridable method that provides a way to render graphics onto the screen with the appropriate offset passed in by the camera.
 	 * @param g
-	 * @param offsetX
-	 * @param offsetY
+	 * @param camX
+	 * @param camY
 	 */
-	public void draw(Graphics g, int offsetX, int offsetY);
+	public void draw(Graphics g, int camX, int camY);
 	/**Returns the x-coordinate in tiles of this component.
 	 * @return int
 	 */

@@ -12,6 +12,7 @@ import org.newdawn.slick.geom.Vector2f;
 import com.cscguru.client.entities.Balance;
 import com.cscguru.client.entities.Player;
 import com.cscguru.client.entities.PlayerInfo;
+import com.cscguru.client.environment.Cycle;
 import com.cscguru.client.interfaces.IClickable;
 import com.cscguru.client.interfaces.IDrawable;
 import com.cscguru.client.items.Item;

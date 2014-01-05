@@ -53,10 +53,8 @@ public class AtlasClient extends StateBasedGame {
 		appgc.setUpdateOnlyWhenVisible(false);
 		appgc.setIcon("res/gfx/earth32.png");
 		appgc.setShowFPS(false);
-		/**
-		 * setVSync(true) gets rid of shearing.
-		 */
 		appgc.setVSync(true);
+		appgc.setSmoothDeltas(true);
 		appgc.setTargetFrameRate(60);
 		appgc.start();
 	}

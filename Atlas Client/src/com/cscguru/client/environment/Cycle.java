@@ -1,4 +1,4 @@
-package com.cscguru.client.ui;
+package com.cscguru.client.environment;
 
 import com.cscguru.client.interfaces.IUpdatable;
 

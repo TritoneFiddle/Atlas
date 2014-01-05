@@ -12,11 +12,14 @@ import org.newdawn.slick.geom.Vector2f;
 import com.cscguru.client.entities.Facing;
 import com.cscguru.client.entities.Mob;
 import com.cscguru.client.entities.Player;
+import com.cscguru.client.environment.Cycle;
 import com.cscguru.client.interfaces.IClickable;
 import com.cscguru.client.interfaces.IDrawable;
 import com.cscguru.client.interfaces.IUpdatable;
 import com.cscguru.client.items.Item;
 import com.cscguru.client.map.AtlasMap;
+import com.cscguru.client.map.LightNode;
+import com.cscguru.client.map.Lighting;
 import com.cscguru.client.map.Spawn;
 /**
  * Handles the display of the world map.
@@ -33,8 +36,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	private int tileY = 0;
 	private Player p;
 	private Cycle c;
-	private Image cloud;
-	private Image light;
+	private LightNode light;
 	
 	//movement
 	private float offsetX = 0;
@@ -59,13 +61,6 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	public Camera(Vector2f origin, Vector2f offset, AtlasMap map, Player p){
 		super(origin, Settings.CAM_H, Settings.CAM_W);
 		this.origin = origin;
-		try {
-			cloud = new Image("res/gfx/cloud1.png");
-			light = new Image("res/gfx/light.png");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		c = new Cycle();
 		tileX = (int)offset.x;
 		tileY = (int)offset.y;
@@ -75,6 +70,12 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 		spawns = map.getSpawns();
 		mobs = new ArrayList<Mob>();
 		this.p = p;
+		try {
+			light = new LightNode(62,143);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * Changes the map.
@@ -106,7 +107,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 			if (drawBackground){
 				offset_X = offsetX;
 				offset_Y = offsetY;
-				g.translate(offset_X, offset_Y);
+				g.translate((int)offset_X, (int)offset_Y);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 1, false);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 2, false);
 				ArrayList<Item> items = map.getItemList();
@@ -115,11 +116,11 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 						items.get(i).draw(tileX,tileY);
 					}
 				}
-				g.translate(offset_X *-1, offset_Y*-1);	//resets the graphics translation.
+				g.translate((int)offset_X *-1,(int) offset_Y*-1);	//resets the graphics translation.
 				drawBackground = false;
 			}
 			else{
-				g.translate(offset_X, offset_Y);
+				g.translate((int)offset_X, (int)offset_Y);
 				for (int i = 0; i < spawns.size(); i++){
 					Spawn spawn = spawns.get(i);
 					if (spawn.hasMob()){
@@ -136,22 +137,20 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				}
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 3, false);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 4, false);
-				g.translate(offset_X *-1, offset_Y*-1);	//resets the graphics translation.
-				Image i = null;
-				try {
-					i = new Image(256,256);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				g.copyArea(i, Settings.CAM_X+ 100, Settings.CAM_Y + 100);
+				
+				g.setDrawMode(Graphics.MODE_ALPHA_MAP);
+				g.clearAlphaMap();
+				g.setColor(new Color(255,255,255,c.getAlpha()));
+				g.fillRect(Settings.CAM_X, Settings.CAM_Y, 672, 672);
+				light.draw(g,tileX,tileY,c.getAlpha());
+				g.translate((int)offset_X *-1,(int) offset_Y*-1);	//resets the graphics translation.
+				
+				g.setDrawMode(Graphics.MODE_ALPHA_BLEND);
 				g.setColor(new Color(0,0,0,c.getAlpha()));
-				g.fillRect(Settings.CAM_X + 16, Settings.CAM_Y + 16, 640, 640);
-				//g.setDrawMode(Graphics.MODE_SCREEN);
-				i.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100);
-				light.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100, new Color(0,0,0,c.getAlpha()));
+				g.fillRect(Settings.CAM_X, Settings.CAM_Y, 672, 672);	
 				g.setDrawMode(Graphics.MODE_NORMAL);
-				//cloud.draw(Settings.CAM_X + 100, Settings.CAM_Y + 100, new Color(0,0,0,.35f));
+				g.clearAlphaMap();
+				g.flush();
 				drawBackground = true;
 			}
 		}
