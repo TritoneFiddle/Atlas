@@ -11,7 +11,7 @@ public class Cycle implements IUpdatable{
 	private int hours;
 	private int totalUp;
 	private float alpha = 0f;
-	private float max = .85f;
+	private float max = .95f;
 	private float min = .0f;
 	private int twilight = 120;
 	private float rate = (max - min) / twilight ;

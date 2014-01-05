@@ -59,11 +59,16 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 		//Building the collision array (column-major)
 		collisionID = this.getTileSet(0).firstGID;
 		red = new int[getWidth()][getHeight()];
+		lights = new LightNode[getWidth()][getHeight()];
 		for (int i = 0; i < getHeight(); i++){
 			for (int j = 0; j < getWidth(); j++){
 				int tileID = getTileId(j,i,0);
 				if (tileID == collisionID){
 					red[j][i] = 1;
+				}
+				if (tileID == collisionID + 4){
+					LightNode light = new LightNode(j,i);
+					lights[j][i] = light;
 				}
 			}
 		}

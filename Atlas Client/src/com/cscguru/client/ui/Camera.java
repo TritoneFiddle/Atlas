@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
@@ -19,7 +18,6 @@ import com.cscguru.client.interfaces.IUpdatable;
 import com.cscguru.client.items.Item;
 import com.cscguru.client.map.AtlasMap;
 import com.cscguru.client.map.LightNode;
-import com.cscguru.client.map.Lighting;
 import com.cscguru.client.map.Spawn;
 /**
  * Handles the display of the world map.
@@ -138,11 +136,20 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 3, false);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 4, false);
 				
+				//lighting
 				g.setDrawMode(Graphics.MODE_ALPHA_MAP);
 				g.clearAlphaMap();
 				g.setColor(new Color(255,255,255,c.getAlpha()));
 				g.fillRect(Settings.CAM_X, Settings.CAM_Y, 672, 672);
-				light.draw(g,tileX,tileY,c.getAlpha());
+				LightNode[][] lights = map.getLights();
+				for (int i = tileX - 20; i <= tileX + 60; i++){
+					for (int j = tileY - 20; j <= tileY + 60; j++){
+						if (lights[i][j] != null){
+							lights[i][j].draw(g, tileX,tileY,c.getAlpha());
+						}
+					}
+				}
+				
 				g.translate((int)offset_X *-1,(int) offset_Y*-1);	//resets the graphics translation.
 				
 				g.setDrawMode(Graphics.MODE_ALPHA_BLEND);
