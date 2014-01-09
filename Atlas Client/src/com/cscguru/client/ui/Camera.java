@@ -56,15 +56,15 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	public Camera(Vector2f origin, Vector2f offset, AtlasMap map, Player p){
 		super(origin, Settings.CAM_H, Settings.CAM_W);
 		this.origin = origin;
+		this.map = map;
+		this.p = p;
 		c = new Cycle();
 		tileX = (int)offset.x;
 		tileY = (int)offset.y;
 		targetTileX = tileX;
 		targetTileY = tileY;
-		this.map = map;
 		spawns = map.getSpawns();
 		mobs = new ArrayList<Mob>();
-		this.p = p;
 	}
 	/**
 	 * Changes the map.
@@ -96,7 +96,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 			if (drawBackground){
 				offset_X = offsetX;
 				offset_Y = offsetY;
-				g.translate((int)offset_X, (int)offset_Y);
+				g.translate((int)offset_X, (int)offset_Y);  //(int) casting to reduce horizontal shearing.
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 1, false);
 				map.render((int)origin.x,(int)origin.y, tileX, tileY, 42, 42, 2, false);
 				ArrayList<Item> items = map.getItemList();
@@ -199,7 +199,7 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 	public boolean isMoving(){
 		return isMoving;
 	}
-	/**Moves the camera in the direction of the facing.
+	/**Moves the camera in the direction of the facing value.
 	 * @param face
 	 */
 	public void moveCamera(Facing face){
@@ -234,13 +234,13 @@ public class Camera extends BoundBox implements IUpdatable, IDrawable, IClickabl
 				i -= 1;
 				continue;
 			}
-			Rectangle r = p.getHitBox();
+			Rectangle pHitBox = p.getHitBox();
 			if (!m.isOnScreen()){
 				m.setListed(false);
 				mobs.remove(i);
 				continue;
 			}
-			if (r.intersects(m)){
+			if (pHitBox.intersects(m)){
 				return true;
 			}			
 		}
