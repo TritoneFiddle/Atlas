@@ -129,9 +129,11 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 
 	@Override
 	public void update(int delta) {
+		//spawn and ultimately mob updates
 		for (int i = 0; i < spawns.size(); i++){
 			spawns.get(i).update(delta);
 		}
+		//item updates
 		for (int i = 0; i < items.size(); i++){
 			if (items.get(i) != null){
 				items.get(i).update(delta);
@@ -149,7 +151,11 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 		Facing face = a.getFacing();
 		int x = a.getTileX();
 		int y = a.getTileY();
-		
+		/**
+		 * The following code gets the width and height of the sprite (in tiles) as these things could be variable (like 2x2,2x3,3x5, etc).
+		 * Because of the variable dimensions, loops are used to make sure every relevant block (based on the Facing value) was checked for
+		 * collision, whether it be 2 blocks, 3, 4, etc.
+		 */
 		int w = a.getActor().getSpriteWidth();
 		int h = a.getActor().getSpriteHeight();
 		
@@ -229,6 +235,10 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 	 * @param m
 	 */
 	public void runLootTable(Mob m){
+		/**
+		 * Rolls to see if an item should drop, and if it an item should drop, it
+		 * places the item on the map at the location of where the mob died.
+		 */
 		int mlvl = m.getMobStat().getLevel();
 		Vector2f v = new Vector2f(m.getTileX() * 16 + Settings.CAM_X, m.getTileY() * 16 + Settings.CAM_Y);
 		Random r = new Random();
@@ -257,9 +267,9 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 			int tileY = heals.getTileY();
 			int pX = p.getTileX();
 			int pY = p.getTileY();
-			int j = Math.abs(pX - tileX);
-			int k = Math.abs(pY - tileY);
-			if (j > 20 || k > 20){
+			int distanceX = Math.abs(pX - tileX);
+			int distanceY = Math.abs(pY - tileY);
+			if (distanceX > 20 || distanceY > 20){  //this ignores all healers on the map that aren't relevant to the player.
 				continue;
 			}
 			int x = tileX - (p.getTileX() - 20);
@@ -296,9 +306,9 @@ public class AtlasMap extends TiledMap implements IUpdatable{
 			int tileY = marks.getTileY();
 			int pX = p.getTileX();
 			int pY = p.getTileY();
-			int j = Math.abs(pX - tileX);
-			int k = Math.abs(pY - tileY);
-			if (j > 20 || k > 20){
+			int distanceX = Math.abs(pX - tileX);
+			int distanceY = Math.abs(pY - tileY);
+			if (distanceX > 20 || distanceY > 20){  //ignores irrelevant markers that aren't within the 'view' of the player.
 				continue;
 			}
 			int x = tileX - (p.getTileX() - 20);
